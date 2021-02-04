@@ -1,0 +1,781 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  /* プロジェクトによって変動 */
+  min-width: 1000px;
+  color: #000;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'YuGothic', '游ゴシック', 'メイリオ', Meiryo, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+
+  width: 100%;
+  font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+  /* safari hover対策 */
+  -webkit-font-smoothing: antialiased;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+img {
+  vertical-align: bottom;
+  line-height: 1.0;
+}
+
+button {
+  line-height: 1.0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+
+//*------------------*
+//*  変数管理
+//*------------------*
+
+//color
+$color-black: #333333;
+$color-white: #ffffff;
+
+//font-family
+//-->ヒラギノver.
+$font-main: "ヒラギノ角ゴ Pro W3",
+"Hiragino Kaku Gothic Pro",
+"メイリオ",
+Meiryo,
+"ＭＳ Ｐゴシック",
+"MS PGothic",
+sans-serif;
+
+//-->游ゴシックver.
+// $font-main:"游ゴシック Medium","Yu Gothic Medium","游ゴシック体",YuGothic,sans-serif;
+
+//*------------------*
+//*  レスポンシブ定義
+//*------------------*
+
+//ブレイクポイント
+$tb: 959px; //タブレット
+$mb: 559px; //スマホ
+
+//@mediaのフォーマット
+//タブレット
+@mixin tablet {
+  @media screen and (max-width: $tb) {
+    @content;
+  }
+}
+
+//スマホ
+@mixin mobile {
+  @media screen and (max-width: $mb) {
+    @content;
+  }
+}
+
+//*------------------*
+//*  font-size定義
+//*------------------*
+//$sizeにpx表示を入れて使う
+
+@mixin rem($size) {
+  font-size: $size + px;
+  /*IE9以前に対応する*/
+  font-size: ($size / 16) + rem;
+}
+
+//*------------------*
+//*  base(共通)
+//*------------------*
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'MyFont';
+  src: url(../../font/NotoSerifCJKjp-Medium.otf);
+}
+
+.text_fv {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 100px;
+  text-shadow: 0 0 8px rgb(255, 255, 255);
+}
+
+body {
+  font-family: MyFont;
+}
+
+body {
+  @include rem(10);
+  letter-spacing: 0.5em;
+  color: $color-black;
+  // font-family: $font-main;
+
+}
+
+p {
+  font-size: 16px;
+}
+
+img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+//sectionの共通タイトル設定
+.section__ttl {
+  @include rem(18);
+  text-align: center;
+}
+
+//sectionの共通inner設定
+.section__inner {
+  margin: 0 auto;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.pc {
+  display: block;
+}
+
+.sp {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.max {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 540px) {
+
+  /*ウィンドウ幅が最大867pxまでの場合に適用*/
+  .flx {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .max {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .pc {
+    display: none;
+  }
+
+  .sp {
+    display: block;
+    width: 100%;
+  }
+
+}
+
+
+//*------------------*
+//*  header
+//*------------------*
+.header {
+  // position: fixed;
+  height: 175px;
+
+
+  @include mobile {}
+
+  &__inner {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.header__ttl {
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  background-color: #6e4027;
+  padding: 5px;
+  font-weight: 100;
+}
+
+.header_top_text {
+  font-size: 12px;
+  text-align: right;
+}
+
+.icon {
+  width: 25px;
+}
+
+#btn_green {
+  background-color: #579420;
+  padding: 10px;
+  color: white;
+}
+
+#btn_green_bg {
+  background-color: #579420;
+  padding: 30px;
+  font-size: 30px;
+  color: white;
+  margin: 0px 20px;
+}
+
+//ナビゲーション
+.nav {
+  margin-left: auto;
+
+  @include mobile {
+    display: none;
+  }
+
+  &__list {
+    display: inline-block;
+    margin-right: 1vw;
+    font-size: 20px;
+    color: #579420;
+  }
+}
+
+//------------ここからhamburgerメニュー----------------->
+//スマホのナビゲーション(ハンバーガーメニュー)
+//ハンバーガーの部分
+.hamburger-btn {
+  display: none;
+
+  @include mobile {
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 16px;
+    margin-right: 4vw;
+    z-index: 20;
+  }
+}
+
+.hamburger-btn__parts {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: $color-white;
+  position: absolute;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.hamburger-btn__parts {
+  &.-top {
+    top: 0;
+  }
+
+  &.-middle {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  &.-bottom {
+    bottom: 0;
+  }
+}
+
+//タップ後のハンバーガー
+//１つ目のspanを-45度にする
+.hamburger-btn.active {
+  .hamburger-btn__parts {
+    &.-top {
+      transform: translateY(10px) rotate(-45deg);
+    }
+
+    //2つ目のspanを消す
+    &.-middle {
+      opacity: 0;
+    }
+
+    //3番目のspanを45度に
+    &.-bottom {
+      transform: translateY(-4px) rotate(45deg);
+    }
+  }
+}
+
+//スライドメニュー
+.hamburger {
+  display: none;
+
+  @include mobile {
+    display: block;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    transform: translateX(100vw);
+    transition: all 0.3s;
+    background-color: $color-black;
+
+    &__lists {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    &__list {
+      @include rem(16);
+      list-style: none;
+      text-align: center;
+    }
+
+    &__list+&__list {
+      padding-top: 50px;
+    }
+
+    &__link {
+      text-decoration: none;
+      color: $color-white;
+    }
+  }
+}
+
+//activeクラスをつけたら、スライドイン
+.hamburger.active {
+  transform: translateX(0);
+}
+
+
+.max_700 {
+  max-width: 700px;
+  margin: 60px auto;
+  width: 100%;
+}
+
+.flx {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.greenflx {
+  background-color: white;
+  border: 2px solid green;
+  height: 160px;
+}
+
+.flx_el {
+  width: 50%;
+}
+
+.wh_btn {
+  margin: 60px auto;
+  text-align: center;
+  background-color: white;
+  border: 2px solid green;
+  width: 350px;
+  font-size: 24px;
+  color: green;
+  padding: 10px 0;
+
+}
+
+
+
+
+//------------//ここまでhamburgerメニュー------------------>
+
+//*------------------*
+//*  fv
+//*------------------*
+
+.fv {
+  background-image: url('../../images/bg.png');
+  width: 100%;
+  height: 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title_fv {
+  font-size: 48px;
+  text-align: center;
+  padding-top: 160px;
+  text-shadow: 0 0 8px rgb(255, 255, 255);
+
+}
+
+.fv img {
+  width: 156px;
+  height: 156px;
+}
+
+.green_title {
+  font-size: 32px;
+  margin: 10px auto;
+  margin-bottom: 10px;
+
+}
+
+.green_test {
+  margin: 10px auto;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width:540px) {}
+
+//*------------------*
+//*  reason
+//*------------------*
+
+.sec_title {
+  font-size: 36px;
+  text-align: center;
+  padding-top: 95px;
+  padding-bottom: 45px;
+}
+
+.circle {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.tac {
+  text-align: center;
+}
+
+h5 {
+  text-align: center;
+}
+
+.mar_60 {
+  margin: 60px auto;
+}
+
+@media screen and (max-width: 867px) {
+
+  .circle {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+
+}
+
+//*------------------*
+//*  footer
+//*------------------*
+
+
+footer {
+  height: 280px;
+  background-color: #7d7d7d;
+  padding: 50px 0;
+}
+
+.footer_c {
+  background-color: #7d7d7d;
+  border-top: 1px white solid;
+}
+
+.footer_title {
+  color: white;
+  font-size: 33px;
+}
+
+footer li {
+  font-size: 16px;
+  color: white;
+  margin: 10px 0;
+}
+
+.wh_text {
+  color: white;
+  text-align: center;
+}
+
+/*FontAwesomeを使用しています。*/
+.header-8 {
+  box-sizing: border-box;
+  width: 100%;
+  height: 120px;
+}
+
+.box {
+  box-sizing: border-box;
+}
+
+/* ========== header ========== */
+.box-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  width: 100px;
+}
+
+.sp-nav {
+  display: none;
+}
+
+/* ========== nav ========== */
+.box-nav {
+  width: 100%;
+  height: 40px;
+}
+
+.inner-nav {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0 auto;
+  line-height: 40px;
+  list-style: none;
+}
+
+.menu {
+  position: relative;
+  padding: 0 30px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.menu:not(:first-of-type)::before {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  width: 1px;
+  height: 50%;
+  content: '';
+  background: #3a3a3a;
+}
+
+.menu:hover {
+  color: #6e4027;
+}
+
+.fv a:hover,
+.cta a:hover {
+  opacity: 0.7;
+}
+
+/* ========== sp ========== */
+@media screen and (max-width: 480px) {
+  .header-8 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 0.8em;
+  }
+
+  .box-nav {
+    display: none;
+  }
+
+  .sp-nav {
+    display: block;
+  }
+
+  .box-logo {
+    height: 60px;
+  }
+
+  .logo-img {
+    width: 70px;
+  }
+}
